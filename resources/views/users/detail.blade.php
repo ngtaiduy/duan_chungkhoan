@@ -121,7 +121,7 @@
                                 </div>
                                 <p>One Page</p>
                                 <div class="progress mb-3" style="height: 5px">
-<div class="progress-bar bg-success" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <p>Mobile Template</p>
                                 <div class="progress mb-3" style="height: 5px">

@@ -12,10 +12,10 @@ class LoginController extends Controller
         return view('auth.login');
     }
     public function postLogin(Request $request){
-        $user = $request->user;
+        $username = $request->username;
         $password = $request->password;
 
-        if(Auth::attempt(['email' => $user, 'password' => $password], $request->remember) || Auth::attempt(['phone_number' => $user, 'password' => $password], $request->remember)){
+        if(Auth::attempt(['email' => $username, 'password' => $password], $request->remember) || Auth::attempt(['phone_number' => $username, 'password' => $password], $request->remember)){
             return redirect(route('user.detail', ['id' => Auth::user()->id]))->with('msg', 'login thành công');
         }
         return back()->with('msg', 'Tài khoản/mật khẩu không chính xác');
