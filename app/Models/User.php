@@ -16,6 +16,10 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id');
     }
 
+    public function specialist_info(){
+        return $this->hasOne(SpecialistInfo::class, 'user_id', 'id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

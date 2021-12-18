@@ -42,11 +42,15 @@ class UserController extends Controller
     }
     public function detail($id){
         $user = User::find($id);
-        $user->load('role');
+        $user->load('role', 'specialist_info');
+        if($user->role_id == 1){
+            $user->specialist_info->view = $user->specialist_info->view + 1;
+            $user->specialist_info->save();
+        }
+
         if(!$user){
             return redirect(route('403'));
         }
-        
         return view('users.detail', compact('user'));
     }
 

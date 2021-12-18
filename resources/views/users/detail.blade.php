@@ -15,12 +15,18 @@
                                 @if (Session::has('message_success'))
                                     <p class="text-primary">{{Session::get('message_success')}}</p>
                                 @endif
-                                <h2>{{$user->name}}</h2>
-                                <h4>{{$user->role->name}}</h4>
-                                {{-- <p class="text-secondary mb-1">{{$user->role->name}}</p> --}}
-                                <p class="text-muted font-size-sm">{{$user->email}}</p>
+                                <h4>{{$user->name}}</h4>
+                                    <p class="text-secondary mb-1">{{$user->role->name}}</p>
+                                    <p class="text-muted font-size-sm">{{$user->email}}</p>
+                                @if ($user->role_id == 1)
+                                    <p class="text-muted font-size-sm">Lượt xem: {{$user->specialist_info->view}}</p>
+                                    <p class="text-muted font-size-sm">Điểm: {{$user->specialist_info->score}}</p>
+                                @endif
                                 <button class="btn btn-outline-primary"><a href="{{route('user.edit', ['id' => $user->id])}}">Sửa trang cá nhân</a></button>
                                 <button class="btn btn-outline-primary"><a href="{{route('change-password', ['id' => $user->id])}}">Thay đổi mật khẩu</a></button>
+                                @if (Auth::user()->id == $user->id)
+                                    <button class="btn btn-outline-primary"><a href="{{route('logout')}}">Đăng xuất</a></button>
+                                @endif
                             </div>
                         </div>
                         <hr class="my-4">
