@@ -1,159 +1,112 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+{{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> --}}
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<!DOCTYPE html>
-<html lang="en">
-    <head> 
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+@extends('layouts.index')
+@section('content')
 
-		<!-- Website CSS style -->
-		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+{{-- tailwind --}}
 
-		<!-- Website Font style -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-		
-		<!-- Fonts -->
-		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
-		<title>Admin</title>
-        <style>
-            /*
-            /* Created by Filipe Pina
-            * Specific styles of signin, register, component
-            */
-            /*
-            * General styles
-            */
+<section class="flex flex-col md:flex-row h-screen items-center">
 
-            body, html{
-                height: 100%;
-                background-repeat: no-repeat;
-                background-color: #d3d3d3;
-                font-family: 'Oxygen', sans-serif;
-            }
+	<div class="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
+		<img src="https://source.unsplash.com/random" alt="" class="w-full h-full object-cover">
+	</div>
 
-            .main{
-                margin-top: 70px;
-            }
+	<div class="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
+        flex items-center justify-center">
 
-            h1.title { 
-                font-size: 50px;
-                font-family: 'Passion One', cursive; 
-                font-weight: 400; 
-            }
+		<div class="w-full h-100">
 
-            hr{
-                width: 10%;
-                color: #fff;
-            }
-
-            .form-group{
-                margin-bottom: 15px;
-            }
-
-            label{
-                margin-bottom: 15px;
-            }
-
-            input,
-            input::-webkit-input-placeholder {
-                font-size: 11px;
-                padding-top: 3px;
-            }
-
-            .main-login{
-                background-color: #fff;
-                /* shadows and rounded borders */
-                -moz-border-radius: 2px;
-                -webkit-border-radius: 2px;
-                border-radius: 2px;
-                -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-                -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-
-            }
-
-            .main-center{
-                margin-top: 30px;
-                margin: 0 auto;
-                max-width: 330px;
-                padding: 40px 40px;
-
-            }
-
-            .login-button{
-                margin-top: 5px;
-            }
-
-            .login-register{
-                font-size: 11px;
-                text-align: center;
-            }
-
-        </style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="row main">
-				<div class="panel-heading">
-	               <div class="panel-title text-center">
-	               		<h1 class="title">Company Name</h1>
-	               		<hr />
-	               	</div>
-	            </div> 
-				<div class="main-login main-center">
-                    @if(Session::has('msg'))
-                        <p class="login-box-msg text-danger">{{Session::get('msg')}}</p>      
-                    @endif
-                    @if (Session::has('message_success'))
-                        <p class="text-success">{{Session::get('message_success')}}</p>
-                    @endif
-					<form class="form-horizontal" method="post" action="">
-                        @csrf
-						<div class="form-group">
-							<label for="username" class="cols-sm-2 control-label">Username</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="username" id="username"  placeholder="Nhập email hoặc số điện thoại"/>
-								</div>
-							</div>
-                            @error('email')
-                                <p class="text-danger">{{$message}}</p>
-                            @enderror
-						</div>
-
-						<div class="form-group">
-							<label for="password" class="cols-sm-2 control-label">Mật khẩu</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Nhập mật khẩu"/>
-								</div>
-							</div>
-                            @error('password')
-                                <p class="text-danger">{{$message}}</p>
-                            @enderror
-						</div>
-
-						<div class="form-group ">
-							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Đăng nhập</button>
-						</div>
-						<div class="login-register">
-				            Bạn chưa có tài khoản?<a href="{{ route('register') }}"> Tạo tài khoản</a>
-				         </div>
-                         {{-- <div class="login-register">
-				            <a href="{{ route('password-request') }}">Quên mật khẩu</a>
-				         </div> --}}
-					</form>
-				</div>
+			<h1 class="text-xl md:text-2xl font-bold leading-tight p-4 text-center">Sign up</h1>
+			<!-- login by google and facebook -->
+			<div class="p-2">
+				<button type="button"
+					class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 mb-3 border border-gray-300">
+					<div class="flex items-center justify-center">
+						<img src="https://img.icons8.com/color/28/000000/google-logo.png"/>
+						<span class="ml-4">
+							Log in
+							with
+							Google</span>
+					</div>
+				</button>
+				<button type="button"
+					class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
+					<div class="flex items-center justify-center">
+						<img src="https://img.icons8.com/color/28/000000/facebook-new.png"/>
+						<span class="ml-4">
+							Log in
+							with
+							Facebook</span>
+					</div>
+				</button>
+				<hr class="mt-8 border-gray-300 w-full">
 			</div>
-		</div>
 
-		<script type="text/javascript" src="assets/js/bootstrap.js"></script>
-	</body>
-</html>
+			<div class="p-2 grid grid-cols-2 gap-4">
+				<button type="button"
+					class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
+					<div class="flex items-center justify-center">
+						<a href="#" class="active" id="register2-form-link">Đăng ký chuyên gia</a>
+					</div>
+				</button>
+				<button type="button"
+					class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
+					<div class="flex items-center justify-center">
+						<a href="#" id="register-form-link">Đăng ký khách hàng</a>
+					</div>
+				</button>
+			</div>
+			
+			<!-- form -->
+			<form id="register2-form" action="{{ route('login') }}" method="post" style="display: block;">
+				@csrf
+				<div class="p-2">
+					<input type="email" name="email" id="email" tabindex="1" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+						placeholder="Email" value="" autofocus autocomplete>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    </div>
+				<div class="p-2">
+					<input type="password" name="password" id="password" tabindex="2"
+					class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+					focus:bg-white focus:outline-none" placeholder="Mật khẩu">
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="p-2">
+                    <div class="col-md-6 offset-md-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                            <label class="form-check-label" for="remember">
+                                {{ __('Remember Me') }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+				<div class="p-2 text-center">
+					<button type="submit" class="w-48 bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
+					px-2 py-3 mt-4">{{ __('Login') }}</button>
+                    @if (Route::has('password.request'))
+                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                            {{ __('Forgot Your Password?') }}
+                        </a>
+                    @endif
+				</div>
+			</form>
+		</div>
+	</div>
+
+</section>
+
+@endsection

@@ -30,7 +30,7 @@ class ResetPasswordController extends Controller
         }
   
         return response()->json([
-        'message' => 'We have e-mailed your password reset link!'
+        'message' => 'Chúng tôi đã gửi link reset mật khẩu về Email của bạn, vui lòng kiểm tra Email!'
         ]);
     }
 
@@ -41,7 +41,7 @@ class ResetPasswordController extends Controller
             $passwordReset->delete();
 
             return response()->json([
-                'message' => 'This password reset token is invalid.',
+                'message' => 'Token không dùng cho tài khoản này',
             ], 422);
         }
         $user = User::where('email', $passwordReset->email)->firstOrFail();

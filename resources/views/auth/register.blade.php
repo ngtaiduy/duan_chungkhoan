@@ -6,93 +6,6 @@
 @extends('layouts.index')
 @section('content')
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<div class="panel panel-login">
-				<div class="panel-heading">
-					<div class="row">
-						{{-- <div class="col-xs-6">
-							<a href="#" class="active" id="register2-form-link">Đăng ký chuyên gia</a>
-						</div>
-						<div class="col-xs-6">
-							<a href="#" id="register-form-link">Đăng ký khách hàng</a>
-						</div> --}}
-					</div>
-					<hr>
-				</div>
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-lg-12">
-							{{-- <form id="register2-form" action="" method="post" role="form" style="display: block;">
-								@csrf
-								<div class="form-group">
-									<input type="hidden" name="role_id" id="role_id" tabindex="1" class="form-control"
-										placeholder="Chuyên gia" value="1" disabled>
-								</div>
-								<div class="form-group">
-									<input type="text" name="name" id="name" tabindex="1" class="form-control"
-										placeholder="Tên" value="">
-								</div>
-								<div class="form-group">
-									<input type="email" name="email" id="email" tabindex="1" class="form-control"
-										placeholder="Email" value="">
-								</div>
-								<div class="form-group">
-									<input type="password" name="password" id="password" tabindex="2"
-										class="form-control" placeholder="Mật khẩu">
-								</div>
-								<div class="form-group">
-									<input type="password" name="password2" id="password2" tabindex="2"
-										class="form-control" placeholder="Nhập lại mật khẩu">
-								</div>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-sm-6 col-sm-offset-3">
-											<button type="submit">Đăng ký1</button>
-										</div>
-									</div>
-								</div>
-							</form>
-							<form id="register-form" action="" method="post" role="form" style="display: none;">
-								@csrf
-								<div class="form-group">
-									<input type="hidden" name="role_id" id="role_id" tabindex="1" class="form-control"
-										placeholder="Khách hàng" value="2" disabled>
-								</div>
-								<div class="form-group">
-									<input type="text" name="name" id="name" tabindex="1" class="form-control"
-										placeholder="Tên" value="">
-								</div>
-								<div class="form-group">
-									<input type="email" name="email" id="email" tabindex="1" class="form-control"
-										placeholder="Email" value="">
-								</div>
-								<div class="form-group">
-									<input type="password" name="password" id="password" tabindex="2"
-										class="form-control" placeholder="Mật khẩu">
-								</div>
-								<div class="form-group">
-									<input type="password" name="password2" id="password2" tabindex="2"
-										class="form-control" placeholder="Nhập lại mật khẩu">
-								</div>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-sm-6 col-sm-offset-3">
-											<button type="submit">Đăng ký2</button>
-										</div>
-									</div>
-								</div>
-							</form> --}}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
 {{-- tailwind --}}
 
 
@@ -158,15 +71,30 @@
 				<div class="p-2">
 					<input type="text" name="name" id="name" tabindex="1" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
 						placeholder="Tên" value="" autofocus autocomplete>
+					@error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong class="text-red-500">{{ $message }}</strong>
+                        </span>
+                    @enderror
 				</div>
 				<div class="p-2">
 					<input type="email" name="email" id="email" tabindex="1" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
 						placeholder="Email" value="" autofocus autocomplete>
+					@error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong class="text-red-500">{{ $message }}</strong>
+                        </span>
+                    @enderror
 				</div>
 				<div class="p-2">
 					<input type="password" name="password" id="password" tabindex="2"
 					class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
 					focus:bg-white focus:outline-none" placeholder="Mật khẩu">
+					@error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong class="text-red-500">{{ $message }}</strong>
+                        </span>
+                    @enderror
 				</div>
 				<div class="p-2">
 					<input type="password" name="password_confirmation" id="password_confirmation" tabindex="2"
@@ -207,12 +135,6 @@
 					px-2 py-3 mt-4">Đăng ký2</button>
 				</div>
 			</form>
-			<!-- new user -->
-			<p class="mt-8 text-center">Need an account? <a href="#"
-					class="text-blue-500 hover:text-blue-700 font-semibold">Create an
-					account</a></p>
-
-
 		</div>
 	</div>
 
