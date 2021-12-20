@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Notifications\ResetPasswordRequest;
+use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Contracts\Auth\CanResetPassword;
+
 
 class User extends Authenticatable
 {
@@ -18,6 +22,12 @@ class User extends Authenticatable
 
     public function specialist_info(){
         return $this->hasOne(SpecialistInfo::class, 'user_id', 'id');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $url = 'http://127.0.0.1:8000/reset-password/'.$token;
+        $this->notify(new ResetPasswordRequest($url));
     }
 
     /**

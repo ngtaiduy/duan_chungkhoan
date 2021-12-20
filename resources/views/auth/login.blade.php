@@ -146,6 +146,9 @@
 						<div class="login-register">
 				            Bạn chưa có tài khoản?<a href="{{ route('register') }}"> Tạo tài khoản</a>
 				         </div>
+                         {{-- <div class="login-register">
+				            <a href="{{ route('password-request') }}">Quên mật khẩu</a>
+				         </div> --}}
 					</form>
 				</div>
 			</div>
