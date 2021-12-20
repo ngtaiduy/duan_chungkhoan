@@ -3,36 +3,72 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\SpecialistInfo;
+use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    public function showRegistrationForm(){
-        return view('auth.register');
+    /*
+    |--------------------------------------------------------------------------
+    | Register Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
+    |
+    */
+
+    use RegistersUsers;
+
+    /**
+     * Where to redirect users after registration.
+     *
+     * @var string
+     */
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
     }
 
-    public function saveRegister(Request $request){
-        $count_user = User::where('email', $request->email)->count();
-        if ($count_user > 0){
-            return redirect(route('register'))->with('message_email', 'Email đã có người dùng');
-        }
-        if ($request->password == $request->password2){
-            $model = new User();
-            $passwordHash = Hash::make($request->password);
-            $model->fill($request->all());
-            $model->password = $passwordHash;
-            $model->save();
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
 
-            $specialistModel = new SpecialistInfo();
-            $specialistModel->user_id = $model->id;
-            $specialistModel->save();
-
-            return redirect(route('login'));
-        } else {
-            return redirect(route('register'))->with('message_password', 'Mật khẩu không trùng khớp, mời nhập lại');
-        }
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\Models\User
+     */
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role_id' => $data['role_id']
+        ]);
     }
 }

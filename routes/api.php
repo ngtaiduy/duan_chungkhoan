@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\NewPasswordController;
 use App\Http\Controllers\UserController;
 use App\Models\PasswordReset as ModelsPasswordReset;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +28,3 @@ use Illuminate\Support\Str;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::post('reset-password', 'ResetPasswordController@sendMail');
-Route::put('reset-password/{token}', 'ResetPasswordController@reset');
