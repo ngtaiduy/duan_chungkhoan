@@ -13,9 +13,9 @@
                         @if (Session::has('message_password'))
                             <p class="text-danger">{{Session::get('message_password')}}</p>
                         @endif
-                        {{-- @error('password')
+                        @error('password')
                             <p class="text-danger">{{$message}}</p>
-                        @enderror --}}
+                        @enderror
                     </div>
                 
                     <!-- Text input -->

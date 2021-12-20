@@ -22,10 +22,12 @@
 
 			<h1 class="text-xl md:text-2xl font-bold leading-tight p-4 text-center">{{ __('Quên mật khẩu') }}</h1>
 			@if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+				<div class="p-2">
+					<span class="invalid-feedback" role="alert">
+						<strong class="text-red-500">{{ session('status') }}</strong>
+					</span>
+				</div>
+            @endif
 			<!-- form -->
 			<form id="register2-form" action="{{ route('password.email') }}" method="post" style="display: block;">
 				@csrf
@@ -34,7 +36,7 @@
 						placeholder="Nhập Email" value="" autofocus autocomplete>
                     @error('email')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            <strong class="text-red-500">{{ $message }}</strong>
                         </span>
                     @enderror
                     </div>

@@ -50,11 +50,11 @@
 			<form id="" action="{{ route('login') }}" method="post" style="display: block;">
 				@csrf
 				<div class="p-2">
-					<input type="email" name="email" id="email" tabindex="1" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
-						placeholder="Email" value="" autofocus autocomplete>
+					<input type="text" name="username" id="email" tabindex="1" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+						placeholder="Nhập email hoặc số điện thoại" value="" autofocus autocomplete>
                     @error('email')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            <strong class="text-red-500">{{ $message }}</strong>
                         </span>
                     @enderror
                     </div>
@@ -64,7 +64,7 @@
 					focus:bg-white focus:outline-none" placeholder="Mật khẩu">
                     @error('password')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            <strong class="text-red-500">{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>

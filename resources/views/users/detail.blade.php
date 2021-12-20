@@ -22,9 +22,9 @@
                                     <p class="text-muted font-size-sm">Lượt xem: {{$user->specialist_info->view}}</p>
                                     <p class="text-muted font-size-sm">Điểm: {{$user->specialist_info->score}}</p>
                                 @endif
-                                <button class="btn btn-outline-primary"><a href="{{route('user.edit', ['id' => $user->id])}}">Sửa trang cá nhân</a></button>
-                                <button class="btn btn-outline-primary"><a href="{{route('change-password', ['id' => $user->id])}}">Thay đổi mật khẩu</a></button>
-                                @if (Auth::user()->id == $user->id)
+                                @if (isset(Auth::user()->id) && Auth::user()->id == $user->id)
+                                    <button class="btn btn-outline-primary"><a href="{{route('user.edit', ['id' => $user->id])}}">Sửa trang cá nhân</a></button>
+                                    <button class="btn btn-outline-primary"><a href="{{route('change-password', ['id' => $user->id])}}">Thay đổi mật khẩu</a></button>                            
                                     <button class="btn btn-outline-primary"><a href="{{route('logout')}}">Đăng xuất</a></button>
                                 @endif
                             </div>

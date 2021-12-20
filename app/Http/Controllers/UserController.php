@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -43,7 +45,7 @@ class UserController extends Controller
     public function detail($id){
         $user = User::find($id);
         $user->load('role', 'specialist_info');
-        if($user->role_id == 1){
+        if($user->role_id == 1 & isset(Auth::user()->id)){
             $user->specialist_info->view = $user->specialist_info->view + 1;
             $user->specialist_info->save();
         }
@@ -58,7 +60,7 @@ class UserController extends Controller
         return view('users.change-password');
     }
 
-    public function saveChange($id, Request $request){
+    public function saveChange($id, ChangePasswordRequest $request){
         $user = User::find($id);
 
         $password = $request->password;

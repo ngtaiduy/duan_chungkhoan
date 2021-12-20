@@ -115,15 +115,30 @@
 				<div class="p-2">
 					<input type="text" name="name" id="name" tabindex="1" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
 						placeholder="Tên" value="" autofocus autocomplete>
+						@error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong class="text-red-500">{{ $message }}</strong>
+                        </span>
+                    @enderror
 				</div>
 				<div class="p-2">
 					<input type="email" name="email" id="email" tabindex="1" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
 						placeholder="Email" value="" autofocus autocomplete>
+						@error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong class="text-red-500">{{ $message }}</strong>
+                        </span>
+                    @enderror
 				</div>
 				<div class="p-2">
 					<input type="password" name="password" id="password" tabindex="2"
 					class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
 					focus:bg-white focus:outline-none" placeholder="Mật khẩu">
+					@error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong class="text-red-500">{{ $message }}</strong>
+                        </span>
+                    @enderror
 				</div>
 				<div class="p-2">
 					<input type="password" name="password_confirmation" id="password_confirmation" tabindex="2"

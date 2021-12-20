@@ -35,7 +35,7 @@
 						placeholder="Nhập Email" value="{{ old('email') }}" autofocus autocomplete>
                         @error('email')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            <strong class="text-red-500">{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>
@@ -44,7 +44,7 @@
 						placeholder="Nhập Password" value="">
                         @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong class="text-red-500">{{ $message }}</strong>
                                     </span>
                                 @enderror
                 </div>
