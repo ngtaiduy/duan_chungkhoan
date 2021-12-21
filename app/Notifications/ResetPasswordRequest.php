@@ -43,9 +43,9 @@ class ResetPasswordRequest extends Notification implements ShouldQueue
         $url = url('password/reset/' . $this->token);
         
         return (new MailMessage)
-            ->line('You are receiving this email because we received a password reset request for your account.')
-            ->action('Reset Password', url(str_replace('?token=', '/', $this->token)))
-            ->line('If you did not request a password reset, no further action is required.');
+            ->line('Bạn nhận được Email này vì chúng tôi đã nhận được yêu cầu đặt lại mật khẩu cho tài khoản của bạn.')
+            ->action('Đặt lại mật khẩu', url(str_replace('?token=', '/', $this->token)))
+            ->line('Nếu bạn không cần đổi mật khẩu, hãy bỏ qua thư này.');
     }
 
     /**

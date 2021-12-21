@@ -43,10 +43,10 @@
 					<input type="password" name="password" id="password" tabindex="1" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
 						placeholder="Nhập Password" value="">
                         @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong class="text-red-500">{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <span class="invalid-feedback" role="alert">
+                                <strong class="text-red-500">{{ $message }}</strong>
+                            </span>
+                        @enderror
                 </div>
                 <div class="p-2">
 					<input type="password" name="password_confirmation" id="password-confirm" tabindex="1" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"

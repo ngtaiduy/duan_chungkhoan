@@ -33,7 +33,7 @@
 				@csrf
 				<div class="p-2">
 					<input type="email" name="email" id="email" tabindex="1" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
-						placeholder="Nhập Email" value="" autofocus autocomplete>
+						placeholder="Nhập Email" value="{{ old('email') }}" autofocus autocomplete>
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong class="text-red-500">{{ $message }}</strong>
