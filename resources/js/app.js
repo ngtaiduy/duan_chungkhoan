@@ -1,6 +1,5 @@
 import React from 'react';
-import  ReactDOM  from 'react-dom';
-function App(){
-    return <h1 class=" text-[#cfe1a7] text-xl">Laravel dức anh ăn cứt</h1> 
-}
-ReactDOM.render(<App />, document.getElementById('app'));
+import ReactDOM from 'react-dom';
+import Index from './components/Index';
+
+ReactDOM.render(<Index />,document.getElementById('app'));
