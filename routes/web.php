@@ -63,3 +63,6 @@ Auth::routes();
 
 // Route::post('reset-password', 'App\Http\Controllers\ResetPasswordController@sendMail');
 Route::put('password/reset/{token}', 'App\Http\Controllers\ResetPasswordController@reset');
+
+
+// Route::get('{path?}', 'SinglePageController')->where('path', '[a-zA-Z0-9-/]+');
