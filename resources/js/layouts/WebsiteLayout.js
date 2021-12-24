@@ -4,20 +4,16 @@ import Footer from "../components/Footer";
 
 export default function WebsiteLayout(props) {
     return (
-        <div>
-            <div>
+        <div className=" max-w-[1300px] font-sans container mx-auto px-4">
+
             <Header {...props} />
 
-            </div>
             <main>
-                <div>
-
                 {props.children}
 
-                </div>
             </main>
             <div>
-            <Footer {...props} />
+                <Footer {...props} />
 
             </div>
         </div>

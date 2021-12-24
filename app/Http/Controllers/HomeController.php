@@ -23,6 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        
+        return response()->json([
+            'status'=> 200,
+            // 'students'=>$students,
+        ]);
     }
 }
