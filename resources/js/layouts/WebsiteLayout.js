@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 export default function WebsiteLayout(props) {
     return (
-        <div className=" max-w-[1300px] font-sans container mx-auto px-4">
+        <div className=" font-sans container mx-auto px-4">
 
             <Header {...props} />
 
