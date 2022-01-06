@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\UserController as APIUserController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -28,3 +29,4 @@ use Illuminate\Support\Str;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('user', [APIUserController::class, 'index']);
